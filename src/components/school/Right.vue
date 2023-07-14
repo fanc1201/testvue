@@ -9,7 +9,6 @@
   
   <script>
 import { getNvrTreeNodeList } from '../../apis/apis.js';
-import axios from 'axios'
 
 export default {
   components: {},
@@ -21,6 +20,7 @@ export default {
 
 
   mounted () {
+    const that = this;
     this.getSchoolClassAll();
 
 //     axios
@@ -36,10 +36,11 @@ export default {
       
   },
   methods: {
+
     getSchoolClassAll() {
-        const that = this;
-        getNvrTreeNodeList(that.tableData)
-  
+      getNvrTreeNodeList();
+        //var data = 
+  //console.log(data);
     }
 
     // getNvrTreeNodeList() {

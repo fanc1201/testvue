@@ -5,6 +5,12 @@ import https from "./axios_ajax.js";
 
 
 export const getNvrTreeNodeList = function(params) {
-    let url = "http://localhost:5197/School/SchoolClass/All";
-    return https(url, params);
+    let url = "SchoolClass/All";
+    var result;
+    https(url,params,result);
+    setTimeout(() => {
+        console.log(result);
+    }, 3000);
+    
+    return result;
 };

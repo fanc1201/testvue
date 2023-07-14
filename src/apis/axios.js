@@ -56,6 +56,7 @@ export default function(
   axios.interceptors.response.use(
     response => {
       if (response.status == 200 && response.data.type) {
+        console.log(response);
         return response;
       }
       if (response.data.status == 405) {
@@ -133,20 +134,33 @@ export default function(
 
   //发送请求
   return new Promise((resolve, reject) => {
-    axios({
-      baseURL,
-      url: path,
-      method,
-      data: data,
-      // timeout: 6000,
-      headers: headers,
-      responseType: responseType
-    })
-      .then(result => {
-        resolve(result.data);
-      })
-      .catch(err => {
-        reject(err);
-      });
+    axios
+    .post(baseURL+path)
+    .then(function (response) {
+  console.log(response.data);
+})
+    .catch(function (error) { // 请求失败处理
+      console.log(error);
+    });
   });
+
+    // //发送请求
+    // return new Promise((resolve, reject) => {
+    //   axios({
+    //     baseURL,
+    //     url: path,
+    //     method,
+    //     data: data,
+    //     // timeout: 6000,
+    //     headers: headers,
+    //     responseType: responseType
+    //   })
+    //     .then(result => {
+    //       console.log(result.data);
+    //       resolve(result.data);
+    //     })
+    //     .catch(err => {
+    //       reject(err);
+    //     });
+    // });
 }
